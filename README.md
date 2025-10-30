@@ -1,1 +1,207 @@
 # Birthday-wish
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday My Love 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff99cc, #ff66b2, #d96eff);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      width: 520px;
+      height: 340px;
+      perspective: 1500px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1.3s ease;
+    }
+
+    .card.open .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      backface-visibility: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      border: 4px solid transparent;
+      background-clip: padding-box;
+    }
+
+    .card-front {
+      background: #fff0f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border: double 4px transparent;
+      border-radius: 20px;
+      background-image: linear-gradient(#fff0f8, #fff0f8),
+                        radial-gradient(circle at top left, #ff4d94, #ff99cc, #d96eff);
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+      animation: glow 2s infinite alternate;
+    }
+
+    .card-front h1 {
+      font-family: 'Great Vibes', cursive;
+      color: #ff4d94;
+      font-size: 42px;
+      margin: 0;
+    }
+
+    .card-front p {
+      font-size: 16px;
+      color: #555;
+      margin-top: 8px;
+    }
+
+    .card-back {
+      background: #fff;
+      transform: rotateY(180deg);
+      padding: 25px 30px;
+      border-radius: 20px;
+      overflow-y: auto;
+    }
+
+    .card-back h1 {
+      text-align: center;
+      font-size: 28px;
+      font-family: 'Great Vibes', cursive;
+      color: #ff4d94;
+      margin-bottom: 15px;
+    }
+
+    .card-back p {
+      font-family: 'Parisienne', cursive;
+      font-size: 20px;
+      line-height: 1.8;
+      color: #333;
+      text-align: left;
+      white-space: pre-line;
+    }
+
+    .signature {
+      font-family: 'Great Vibes', cursive;
+      font-size: 24px;
+      color: #ff4d94;
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    /* Glow border animation */
+    @keyframes glow {
+      from { box-shadow: 0 0 12px #ff66b2, 0 0 20px #ff4d94; }
+      to { box-shadow: 0 0 25px #ff66b2, 0 0 45px #d96eff; }
+    }
+
+    /* Floating hearts */
+    .heart, .sparkle {
+      position: absolute;
+      color: #ff4d94;
+      font-size: 22px;
+      animation: floatUp 7s linear infinite;
+      opacity: 0.8;
+    }
+
+    .sparkle {
+      color: #fffacd;
+      font-size: 14px;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      30% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.3); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" onclick="toggleCard(this)">
+    <div class="card-inner">
+      <!-- Front side -->
+      <div class="card-front">
+        <h1>💌 Happy Birthday 💖</h1>
+        <p>Click to open your love letter ✨</p>
+      </div>
+      <!-- Back side (the letter) -->
+      <div class="card-back">
+        <h1>Happy Birthday My Love 💖</h1>
+        <p>
+My Dearest Love,  
+
+Today, the world celebrates you — the most extraordinary woman who has not only been my greatest blessing but also my truest reason to believe in love. On this day, many years ago, the universe decided to gift me with the most beautiful soul, wrapped in kindness, laughter, and a heart that shines brighter than the stars.  
+
+Every smile you wear has the power to turn my darkest days into light, every touch reminds me of the warmth of home, and every word from you feels like poetry written just for my heart. With you, I have discovered that love is not just a word, but a whole universe of emotions, dreams, and promises that grow deeper each day.  
+
+As you turn a new page in your life today, I wish for you nothing less than boundless joy, endless laughter, and the fulfillment of all your dreams. May you continue to shine with the same grace that makes my heart skip a beat. And may every moment of your life be filled with the same love and magic you’ve poured into mine.  
+
+Thank you for being not just my wife, but my partner, my confidante, my muse, and my forever. You are my favorite hello, my hardest goodbye, and the reason I wake up each day grateful.  
+
+So here’s to you, my love — my heart, my soul, my forever. On this birthday, I promise to keep loving you harder, deeper, and endlessly, as if each day is a celebration of you.  
+
+Happy Birthday, my sweetheart.  
+You are my everything, always and forever.  
+        </p>
+        <div class="signature">— Yours, Forever 💖</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2023/04/01/audio_95e7a3f09b.mp3?filename=romantic-piano-14483.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Floating hearts + sparkles -->
+  <script>
+    const music = document.getElementById("bg-music");
+
+    function toggleCard(card) {
+      card.classList.toggle("open");
+      if (card.classList.contains("open")) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+
+    function createElement(symbol, className) {
+      const el = document.createElement("div");
+      el.classList.add(className);
+      el.innerHTML = symbol;
+      el.style.left = Math.random() * window.innerWidth + "px";
+      el.style.fontSize = Math.random() * 25 + 15 + "px";
+      el.style.animationDuration = Math.random() * 3 + 4 + "s";
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 7000);
+    }
+
+    setInterval(() => createElement("❤", "heart"), 500);
+    setInterval(() => createElement("✨", "sparkle"), 1000);
+  </script>
+
+</body>
+</html>
